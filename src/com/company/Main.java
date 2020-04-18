@@ -15,11 +15,13 @@ public class Main {
         dog.feed();
         dog.feed();
 
+        Car fiat = new Car("Punto", "Fiat", 2003);
 
         Human me = new Human();
         me.firstName = "Wojo";
         me.lastName = "Graban";
         me.pet = dog;
+        me.auto = fiat;
 
         Animal cat = new Animal("cat");
         cat.feed();
