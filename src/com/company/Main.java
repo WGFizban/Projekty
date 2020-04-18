@@ -21,6 +21,6 @@ public class Main {
         me.lastName="Graban";
         me.pet = dog;
 
-
+//skomitowny
     }
 }
