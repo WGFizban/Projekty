@@ -13,9 +13,9 @@ public class Animal {
 
     public Animal(String species) {
         this.species = species;
-        if (species == "Dog") {
+        if (species.equals("Dog")) {
             weight = DEFAULT_DOG_WEIGHT;
-        } else if (species == "Lion") {
+        } else if (species.equals("Lion")) {
             weight = DEFAULT_LION_WEIGHT;
         } else {
             weight = DEFAULT_OTHER_WEIGHT;
