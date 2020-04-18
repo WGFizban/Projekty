@@ -17,10 +17,16 @@ public class Main {
 
 
         Human me = new Human();
-        me.firstName="Wojo";
-        me.lastName="Graban";
+        me.firstName = "Wojo";
+        me.lastName = "Graban";
         me.pet = dog;
 
-//skomitowny
+        Animal cat = new Animal("cat");
+        cat.feed();
+        cat.takeForAWalk();
+        cat.takeForAWalk();
+        cat.takeForAWalk();
+
+
     }
 }
