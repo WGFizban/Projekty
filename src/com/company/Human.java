@@ -44,4 +44,24 @@ public class Human {
         }
 
     }
+
+
+    public Car getAuto() {
+        return (Car) this.auto.clone();
+    }
+
+    public void setAuto(Car auto) {
+
+        if (this.salary > auto.value) {
+            System.out.println("You successfully buy a car without any loan! :D");
+            this.auto = (Car) auto.clone();
+        } else if (salary > (auto.value / 12)) {
+            System.out.println("You buy a car successfully, but you need a loan. Very sad but true :( ");
+            this.auto = (Car) auto.clone();
+        } else {
+            System.out.println("You won't buy this car. Go to college, find a new job and start earning more! :P");
+        }
+
+
+    }
 }
