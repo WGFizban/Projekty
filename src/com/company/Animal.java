@@ -41,4 +41,6 @@ public class Animal {
             System.out.println("You can't walk with dead animal");
         }
     }
+
+
 }
