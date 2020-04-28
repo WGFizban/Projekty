@@ -1,5 +1,8 @@
 package com.company;
 
+import com.company.devices.Car;
+import com.company.devices.Phone;
+
 import java.time.LocalDateTime;
 
 public class Human {
@@ -14,6 +17,12 @@ public class Human {
     private Integer countOfGet = 0; // number of execution getter
     private LocalDateTime lastGet; // date and time of last execution
 
+    public Human(String firstName, String lastName, Phone phone, Animal pet) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.phone = phone;
+        this.pet = pet;
+    }
 
     public Double getSalary() {
 
@@ -63,5 +72,10 @@ public class Human {
         }
 
 
+    }
+
+    //overriding the toString() method for Human
+    public String toString() {
+        return firstName + " " + lastName + " " + phone + " " + pet + " " + auto;
     }
 }

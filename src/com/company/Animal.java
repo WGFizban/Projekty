@@ -11,8 +11,10 @@ public class Animal {
     static final Double DEFAULT_OTHER_WEIGHT = 1.0;
     private Double weight;
 
-    public Animal(String species) {
+
+    public Animal(String species, String name) {
         this.species = species;
+        this.name = name;
         if (species.equals("Dog")) {
             weight = DEFAULT_DOG_WEIGHT;
         } else if (species.equals("Lion")) {
@@ -42,5 +44,8 @@ public class Animal {
         }
     }
 
-
+    //overriding the toString() method for Animal
+    public String toString() {
+        return species + " " + name;
+    }
 }

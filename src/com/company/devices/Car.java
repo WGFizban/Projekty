@@ -1,10 +1,10 @@
-package com.company;
+package com.company.devices;
 
 public class Car {
+    public Double value;
     String model;
-    String producer;
     Integer year;
-    Double value;
+    String producer;
 
     public Car(String model, String producer, Integer year, Double value) {
         this.model = model;
@@ -13,11 +13,22 @@ public class Car {
         this.value = value;
     }
 
+    //overriding the toString() method for Car
+    public String toString() {
+        return producer + " " + model + " " + year + " " + value;
+    }
 
+    //overriding the clone() method for Car
     public Object clone() {
         Car aclone = new Car(this.model, this.producer, this.year, this.value);
         return aclone;
     }
+
+
+
+
+
+
 
 
 }
