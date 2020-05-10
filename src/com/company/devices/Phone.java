@@ -14,4 +14,13 @@ public class Phone extends Device {
         return producer + " " + model + " " + screenSize;
     }
 
+    @Override
+    public void turnOn() {
+        System.out.println("Phone is on");
+    }
+
+    @Override
+    public void sellMe() {
+        System.out.println("You sell phone " + this.model);
+    }
 }

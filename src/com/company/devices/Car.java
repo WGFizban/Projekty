@@ -24,11 +24,14 @@ public class Car extends Device {
     }
 
 
+    @Override
+    public void turnOn() {
+        System.out.println("Car is on");
+    }
 
-
-
-
-
-
+    @Override
+    public void sellMe() {
+        System.out.println("You sell car " + this.model);
+    }
 }
 
