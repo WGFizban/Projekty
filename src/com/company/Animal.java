@@ -9,12 +9,12 @@ public class Animal {
     File pic;
     static final Double DEFAULT_LION_WEIGHT = 80.0;
     static final Double DEFAULT_OTHER_WEIGHT = 1.0;
-    private Double weight;
+    protected Double weight;
 
 
-    public Animal(String species, String name) {
+    public Animal(String species) {
         this.species = species;
-        this.name = name;
+
         if (species.equals("Dog")) {
             weight = DEFAULT_DOG_WEIGHT;
         } else if (species.equals("Lion")) {

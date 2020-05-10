@@ -1,10 +1,9 @@
 package com.company.devices;
 
-public class Car {
+public class Car extends Device {
     public Double value;
-    String model;
     Integer year;
-    String producer;
+
 
     public Car(String model, String producer, Integer year, Double value) {
         this.model = model;

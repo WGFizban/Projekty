@@ -31,9 +31,11 @@ public class Main {
         System.out.println("Comparison with toString Fiat & Fiat1");
         System.out.println((fiat.toString()).equals(fiat1.toString()) + "\n");
         //toString method
-        Animal bob = new Animal("Dog", "Szarik");
+        Animal bob = new Animal("Dog");
         Phone lg = new Phone("LG", "V40", 200.00);
         Human me = new Human("Wojo", "Graban", lg, bob);
+
+
         //If uncomment code below Human get a car :)
 /*        me.setSalary(40000.00);
         me.setAuto(theLittleOne);*/

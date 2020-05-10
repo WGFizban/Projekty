@@ -5,7 +5,8 @@ import com.company.devices.Phone;
 
 import java.time.LocalDateTime;
 
-public class Human {
+//extends
+public class Human extends Animal {
     String firstName;
     String lastName;
     Phone phone;
@@ -18,6 +19,7 @@ public class Human {
     private LocalDateTime lastGet; // date and time of last execution
 
     public Human(String firstName, String lastName, Phone phone, Animal pet) {
+        super("homo sapiens");
         this.firstName = firstName;
         this.lastName = lastName;
         this.phone = phone;
