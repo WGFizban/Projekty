@@ -1,5 +1,7 @@
 package com.company.devices;
 
+import com.company.Human;
+
 public class Phone extends Device {
     Double screenSize;
 
@@ -20,7 +22,17 @@ public class Phone extends Device {
     }
 
     @Override
-    public void sellMe() {
-        System.out.println("You sell phone " + this.model);
+    public void sellMe(Human buyer, Human seller, Double price) throws Exception {
+        if (buyer.cash < price) {
+            throw new Exception("Not enough money, sorry");
+        } else if (seller.phone != this) {
+            throw new Exception("You can't sell this: " + this.toString() + " Its not your!");
+        } else {
+            buyer.cash -= price;
+            seller.cash += price;
+            buyer.phone = this;
+            seller.phone = null;
+            System.out.println(seller.firstName + " successfully sell " + this.toString() + " for price " + price + " to " + buyer.firstName);
+        }
     }
 }

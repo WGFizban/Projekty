@@ -18,30 +18,55 @@ public class Main {
         Car fiat = new Car("Punto", "Fiat", 2003, 10000.00);
         Car fiat1 = new Car("Punto", "Fiat", 2003, 10000.00);
 
-
-        //print
-        System.out.println("Print Object Car seat: " + seat);
-        System.out.println("Print Object Car fiat: " + fiat);
-        System.out.println("And Fiat1 with the same value of pool: " + fiat1 + "\n");
-
-        //comparison
-        System.out.println("Comparison Fiat and Fiat1: " + fiat.equals(fiat1));
-        System.out.println("Comparison Fiat and Fiat : " + fiat.equals(fiat) + "\n");
-        //my own test
-        System.out.println("Comparison with toString Fiat & Fiat1");
-        System.out.println((fiat.toString()).equals(fiat1.toString()) + "\n");
         //toString method
         Animal bob = new Animal("Dog");
+        Animal nia = new Animal("Cat");
+        bob.name = "Bob";
+        nia.name = "Nia";
         Phone lg = new Phone("LG", "V40", 200.00);
+        Phone iphone = new Phone("Samsung", "Galaxy", 300.00);
         Human me = new Human("Wojo", "Graban", lg, bob);
+        Human sister = new Human("Becia", "Budnik", iphone, nia);
+        me.setAuto(mercedes);
 
 
-        //If uncomment code below Human get a car :)
-/*        me.setSalary(40000.00);
-        me.setAuto(theLittleOne);*/
+        //Some try using saleable
+        try {
+            //sell nia not my pet
+            nia.sellMe(sister, me, 100.00);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        try {
+            //sell me :)
+            me.sellMe(sister, me, 500.00);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
-        System.out.println("Animal Object: " + bob + "\n" + "Phone Object: " + lg + "\n" + "Car Object: " + theLittleOne + "\n" +
-                "Human Object: " + me);
+        try {
+            System.out.println("My sister pet  " + sister.pet + " and cash " + sister.cash);
+            System.out.println("My pet  " + me.pet + " and cash " + me.cash);
+            //sell bob my pet
+            bob.sellMe(sister, me, 100.00);
+            System.out.println("My sister pet  " + sister.pet + " and cash " + sister.cash);
+            System.out.println("My pet  " + me.pet + " and cash " + me.cash);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        try {
+            //my sister sell your iphone to me
+            iphone.sellMe(me, sister, 300.00);
+            //me sell mercedes to my sister
+            mercedes.sellMe(sister, me, 250.00);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
+//        System.out.println("Animal Object: " + bob + "\n" + "Phone Object: " + lg + "\n" + "Car Object: " + theLittleOne + "\n" +
+//                "Human Object: " + me);
 
 
     }

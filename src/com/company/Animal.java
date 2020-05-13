@@ -55,11 +55,23 @@ public class Animal implements Edible, Saleable {
         System.out.println("Bon Apetit");
     }
 
+    //implementation interface
     @Override
-    public void sellMe() {
-        if (this.species.equals("homo sapiens")) {
-            System.out.println("You cant sell human");
-        } else
-            System.out.println("You sell animal " + this.name);
+    public void sellMe(Human buyer, Human seller, Double price) throws Exception {
+        if (this instanceof Human) {
+            throw new Exception("You cant sell human you idiot");
+        } else if (buyer.cash < price) {
+            throw new Exception("Not enough money, sorry");
+        } else if (seller.pet != this) {
+            throw new Exception("You can't sell this: " + this.toString() + " Its not your!");
+        } else {
+            buyer.cash -= price;
+            seller.cash += price;
+            buyer.pet = this;
+            seller.pet = null;
+            System.out.println(seller.firstName + " successfully sell " + this.toString() + " for price " + price + " to " + buyer.firstName);
+
+        }
+
     }
 }

@@ -1,5 +1,7 @@
 package com.company.devices;
 
+import com.company.Human;
+
 public class Car extends Device {
     public Double value;
     Integer year;
@@ -17,11 +19,11 @@ public class Car extends Device {
         return producer + " " + model + " " + year + " " + value;
     }
 
-    //overriding the clone() method for Car
-    public Object clone() {
-        Car aclone = new Car(this.model, this.producer, this.year, this.value);
-        return aclone;
-    }
+//    //overriding the clone() method for Car
+//    public Object clone() {
+//        Car aclone = new Car(this.model, this.producer, this.year, this.value);
+//        return aclone;
+//    }
 
 
     @Override
@@ -30,8 +32,19 @@ public class Car extends Device {
     }
 
     @Override
-    public void sellMe() {
-        System.out.println("You sell car " + this.model);
+    public void sellMe(Human buyer, Human seller, Double price) throws Exception {
+        if (buyer.cash < price) {
+            throw new Exception("Not enough money, sorry");
+        } else if (seller.getAuto() != this) {
+            throw new Exception("You can't sell this: " + this.toString() + " Its not your!");
+        } else {
+            buyer.cash -= price;
+            seller.cash += price;
+            buyer.setAuto(this);
+            seller.setAuto(null);
+            System.out.println(seller.firstName + " successfully sell " + this.toString() + " for price " + price + " to " + buyer.firstName);
+        }
+
     }
 }
 

@@ -7,16 +7,16 @@ import java.time.LocalDateTime;
 
 //extends
 public class Human extends Animal {
-    String firstName;
+    public String firstName;
     String lastName;
-    Phone phone;
+    public Phone phone;
     Animal pet;
     Car auto;
-
     private Double salary;
     private Double lastSalary; // last value of salary before set new
     private Integer countOfGet = 0; // number of execution getter
     private LocalDateTime lastGet; // date and time of last execution
+    public Double cash = 300.0; //cash to buy things
 
     public Human(String firstName, String lastName, Phone phone, Animal pet) {
         super("homo sapiens");
@@ -58,22 +58,24 @@ public class Human extends Animal {
 
 
     public Car getAuto() {
-        return (Car) this.auto.clone();
+        return this.auto;
     }
 
     public void setAuto(Car auto) {
+        this.auto = auto;
+    }
+
+    public void buyAutoFromSalon(Car auto) {
 
         if (this.salary > auto.value) {
             System.out.println("You successfully buy a car without any loan! :D");
-            this.auto = (Car) auto.clone();
+            this.auto = auto;
         } else if (salary > (auto.value / 12)) {
             System.out.println("You buy a car successfully, but you need a loan. Very sad but true :( ");
-            this.auto = (Car) auto.clone();
+            this.auto = auto;
         } else {
             System.out.println("You won't buy this car. Go to college, find a new job and start earning more! :P");
         }
-
-
     }
 
     //overriding the toString() method for Human

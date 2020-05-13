@@ -7,4 +7,5 @@ public abstract class Device implements Saleable {
     String model;
 
     abstract public void turnOn();
+
 }
