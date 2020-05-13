@@ -2,7 +2,16 @@ package com.company.devices;
 
 import com.company.creatures.Human;
 
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.List;
+
 public class Phone extends Device {
+
+    static final String DEFAULT_PROTOCOL = "https";
+    static final String DEFAULT_HOST = "wgfizbans.play.pl";
+    static final int DEFAULT_PORT = 140;
+    static final String DEFAULT_APP_VERSION = "Latest";
     Double screenSize;
 
     public Phone(String producer, String model, Double screenSize) {
@@ -35,4 +44,32 @@ public class Phone extends Device {
             System.out.println(seller.firstName + " successfully sell " + this.toString() + " for price " + price + " to " + buyer.firstName);
         }
     }
+
+    //installing an App
+    public void installAnnApp(String[] appNames) throws MalformedURLException {
+        for (String appName : appNames) {
+            installAnnApp(appName);
+        }
+    }
+
+    public void installAnnApp(List<String> appNames) throws MalformedURLException {
+        for (String appName : appNames) {
+            installAnnApp(appName);
+        }
+    }
+
+    public void installAnnApp(String appName) throws MalformedURLException {
+        installAnnApp(appName, DEFAULT_APP_VERSION);
+    }
+
+    public void installAnnApp(String appName, String appVersion) throws MalformedURLException {
+        URL url = new URL(DEFAULT_PROTOCOL, DEFAULT_HOST, DEFAULT_PORT, appName + " version: " + appVersion);
+        installAnnApp(url);
+    }
+
+    public void installAnnApp(URL appUrl) {
+        System.out.println("On your Phone will be installed: " + appUrl.getFile());
+    }
+
+
 }

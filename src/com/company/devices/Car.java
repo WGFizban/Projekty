@@ -2,7 +2,7 @@ package com.company.devices;
 
 import com.company.creatures.Human;
 
-public class Car extends Device {
+public abstract class Car extends Device {
     public Double value;
     Integer year;
 
@@ -24,6 +24,8 @@ public class Car extends Device {
 //        Car aclone = new Car(this.model, this.producer, this.year, this.value);
 //        return aclone;
 //    }
+
+    abstract public void refuel();
 
 
     @Override
