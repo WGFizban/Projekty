@@ -1,5 +1,7 @@
 package com.company;
 
+import com.company.creatures.Human;
+
 public class Test {
 
 

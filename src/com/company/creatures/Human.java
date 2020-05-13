@@ -1,4 +1,4 @@
-package com.company;
+package com.company.creatures;
 
 import com.company.devices.Car;
 import com.company.devices.Phone;
@@ -10,7 +10,7 @@ public class Human extends Animal {
     public String firstName;
     String lastName;
     public Phone phone;
-    Animal pet;
+    public Animal pet;
     Car auto;
     private Double salary;
     private Double lastSalary; // last value of salary before set new

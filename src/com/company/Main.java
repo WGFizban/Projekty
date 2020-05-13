@@ -1,6 +1,9 @@
 package com.company;
 
 
+import com.company.creatures.FarmAnimal;
+import com.company.creatures.Human;
+import com.company.creatures.Pet;
 import com.company.devices.Car;
 import com.company.devices.Phone;
 
@@ -19,10 +22,9 @@ public class Main {
         Car fiat1 = new Car("Punto", "Fiat", 2003, 10000.00);
 
         //toString method
-        Animal bob = new Animal("Dog");
-        Animal nia = new Animal("Cat");
-        bob.name = "Bob";
-        nia.name = "Nia";
+        Pet bob = new Pet("Dog", "Bob");
+        Pet nia = new Pet("Cat", "Nia");
+
         Phone lg = new Phone("LG", "V40", 200.00);
         Phone iphone = new Phone("Samsung", "Galaxy", 300.00);
         Human me = new Human("Wojo", "Graban", lg, bob);
@@ -30,39 +32,10 @@ public class Main {
         me.setAuto(mercedes);
 
 
-        //Some try using saleable
-        try {
-            //sell nia not my pet
-            nia.sellMe(sister, me, 100.00);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        try {
-            //sell me :)
-            me.sellMe(sister, me, 500.00);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        try {
-            System.out.println("My sister pet  " + sister.pet + " and cash " + sister.cash);
-            System.out.println("My pet  " + me.pet + " and cash " + me.cash);
-            //sell bob my pet
-            bob.sellMe(sister, me, 100.00);
-            System.out.println("My sister pet  " + sister.pet + " and cash " + sister.cash);
-            System.out.println("My pet  " + me.pet + " and cash " + me.cash);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        try {
-            //my sister sell your iphone to me
-            iphone.sellMe(me, sister, 300.00);
-            //me sell mercedes to my sister
-            mercedes.sellMe(sister, me, 250.00);
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        bob.Feed();
+        nia.Feed(25.00);
+        FarmAnimal sheep = new FarmAnimal("Sheep");
+        System.out.println(sheep.toString());
 
 
 //        System.out.println("Animal Object: " + bob + "\n" + "Phone Object: " + lg + "\n" + "Car Object: " + theLittleOne + "\n" +

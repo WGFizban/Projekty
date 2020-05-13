@@ -1,14 +1,17 @@
-package com.company;
+package com.company.creatures;
+
+import com.company.Saleable;
 
 import java.io.File;
 
-public class Animal implements Edible, Saleable {
+public abstract class Animal implements Saleable, Feedable {
     final String species;
-    String name;
+
     static final Double DEFAULT_DOG_WEIGHT = 30.0;
     File pic;
     static final Double DEFAULT_LION_WEIGHT = 80.0;
     static final Double DEFAULT_OTHER_WEIGHT = 1.0;
+    static final Double DEFAULT_FOOD_WEIGHT = 1.0;
     protected Double weight;
 
 
@@ -22,14 +25,18 @@ public class Animal implements Edible, Saleable {
         } else {
             weight = DEFAULT_OTHER_WEIGHT;
         }
-
     }
 
+    @Override
+    public void Feed() {
+        Feed(DEFAULT_FOOD_WEIGHT);
+    }
 
-    void feed() {
+    @Override
+    public void Feed(Double foodWeight) {
         if (weight != 0) {
-            weight++;
-            System.out.println("New weight is" + weight);
+            weight += foodWeight;
+            System.out.println("Thanks! New weight is " + weight);
         } else {
             System.out.println("You can't feed dead animal");
         }
@@ -38,7 +45,7 @@ public class Animal implements Edible, Saleable {
     void takeForAWalk() {
         if (weight != 0) {
             weight--;
-            System.out.println("New weight is" + weight);
+            System.out.println("Thanks! New weight is " + weight);
         } else {
             System.out.println("You can't walk with dead animal");
         }
@@ -46,13 +53,7 @@ public class Animal implements Edible, Saleable {
 
     //overriding the toString() method for Animal
     public String toString() {
-        return species + " " + name;
-    }
-
-    @Override
-    public void beEaten() {
-        weight = 0.0;
-        System.out.println("Bon Apetit");
+        return species;
     }
 
     //implementation interface
