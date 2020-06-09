@@ -105,6 +105,13 @@ public class Human extends Animal {
         return -1;
     }
 
+    public int whatPlaceCarInGarage(Car auto) {
+        for (int i = 0; i < garage.length; i++) {
+            if (garage[i] == auto) return i;
+        }
+        return -1;
+    }
+
 
     public void buyAutoFromSalon(Car auto, int garagePlace) {
 
@@ -126,6 +133,6 @@ public class Human extends Animal {
 
     public void sortMyCars() {
         Arrays.sort(garage, Comparator.nullsLast(Comparator.comparingInt(Car::getYear)));
-        System.out.println("Your cars are sort: " + Arrays.toString(this.garage));
+        System.out.println("Your cars " + firstName + " are sort: " + Arrays.toString(this.garage));
     }
 }

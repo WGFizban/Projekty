@@ -39,19 +39,19 @@ public class Main {
         System.out.println("\n Sum value of my cars in garage " + me.valueCarsInGarage() + "\n My sister Sum value cars in  garage " + sister.valueCarsInGarage());
 
 //test selling car
-        elcar.sellCar(sister, me, 1, 10.00); // succesfully sell
-        // elcar.sellCar(sister, me, 1, 8000000.00); //exception with price
-        // elcar.sellCar(sister, me, 1, 10.00); // exception with ownership
+        elcar.sellMe(sister, me, 10.00); // succesfully sell
+        //elcar.sellMe(sister, me,8000000.00); //exception with price
+        //lpgcar.sellMe(sister, me,10.00); // exception with ownership
 
         me.sortMyCars();
         sister.sortMyCars();
 
-
-        System.out.println(sister);
+        System.out.println(me.whatPlaceCarInGarage(mercedes));
 
 
 //test
         //Car[] offer = {mercedes, elcar, lpgcar,null, seat,null};
+
 
         //System.out.println("Cars in offer before sort: " + Arrays.toString(offer));
 //sort with null
