@@ -12,4 +12,6 @@ public class ElectricCar extends Car {
     public void refuel() {
         System.out.println("Connect the battery for charging.");
     }
+
+
 }

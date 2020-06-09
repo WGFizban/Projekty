@@ -4,6 +4,9 @@ import com.company.devices.Car;
 import com.company.devices.Phone;
 
 import java.time.LocalDateTime;
+import java.util.Arrays;
+import java.util.Comparator;
+
 
 //extends
 public class Human extends Animal {
@@ -11,12 +14,20 @@ public class Human extends Animal {
     String lastName;
     public Phone phone;
     public Animal pet;
-    Car auto;
+
+
+    static final int DEFAULT_NUMBER_CAR_IN_GARAGE = 2;
+    public Double cash = 30000.0; //cash to buy things
+
+
+    //Car auto;
+
+
     private Double salary;
     private Double lastSalary; // last value of salary before set new
     private Integer countOfGet = 0; // number of execution getter
     private LocalDateTime lastGet; // date and time of last execution
-    public Double cash = 300.0; //cash to buy things
+    private Car[] garage;
 
     public Human(String firstName, String lastName, Phone phone, Animal pet) {
         super("homo sapiens");
@@ -24,6 +35,17 @@ public class Human extends Animal {
         this.lastName = lastName;
         this.phone = phone;
         this.pet = pet;
+        this.garage = new Car[DEFAULT_NUMBER_CAR_IN_GARAGE];
+    }
+
+    //overriding constructor for Human
+    public Human(String firstName, String lastName, Phone phone, Animal pet, int garageLimit) {
+        super("homo sapiens");
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.phone = phone;
+        this.pet = pet;
+        this.garage = new Car[garageLimit];
     }
 
     public Double getSalary() {
@@ -57,22 +79,41 @@ public class Human extends Animal {
     }
 
 
-    public Car getAuto() {
-        return this.auto;
+    // refactor get and set car
+    public Car getAuto(int placeInGarage) {
+        return this.garage[placeInGarage];
     }
 
-    public void setAuto(Car auto) {
-        this.auto = auto;
+    public void setAuto(Car auto, int placeInGarage) {
+        this.garage[placeInGarage] = auto;
     }
 
-    public void buyAutoFromSalon(Car auto) {
+    // calculated value of cars in garage
+    public Double valueCarsInGarage() {
+        Double sumCarValue = 0.0;
+        for (Car car : garage) {
+            if (car != null) sumCarValue += car.value;
+        }
+        return sumCarValue;
+    }
 
-        if (this.salary > auto.value) {
+    //check free place in garage
+    public int checkFirstFreePlaceInGarage() {
+        for (int i = 0; i < garage.length; i++) {
+            if (garage[i] == null) return i;
+        }
+        return -1;
+    }
+
+
+    public void buyAutoFromSalon(Car auto, int garagePlace) {
+
+        if (this.cash > auto.value) {
             System.out.println("You successfully buy a car without any loan! :D");
-            this.auto = auto;
-        } else if (salary > (auto.value / 12)) {
+            this.setAuto(auto, garagePlace);
+        } else if (cash > (auto.value / 12)) {
             System.out.println("You buy a car successfully, but you need a loan. Very sad but true :( ");
-            this.auto = auto;
+            this.setAuto(auto, garagePlace);
         } else {
             System.out.println("You won't buy this car. Go to college, find a new job and start earning more! :P");
         }
@@ -80,6 +121,11 @@ public class Human extends Animal {
 
     //overriding the toString() method for Human
     public String toString() {
-        return firstName + " " + lastName + " " + phone + " " + pet + " " + auto;
+        return firstName + " " + lastName + " " + phone + " " + pet + " " + Arrays.toString(garage);
+    }
+
+    public void sortMyCars() {
+        Arrays.sort(garage, Comparator.nullsLast(Comparator.comparingInt(Car::getYear)));
+        System.out.println("Your cars are sort: " + Arrays.toString(this.garage));
     }
 }

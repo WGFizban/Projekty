@@ -8,21 +8,18 @@ import com.company.devices.ElectricCar;
 import com.company.devices.LPGCar;
 import com.company.devices.Phone;
 
-import java.net.MalformedURLException;
-import java.util.ArrayList;
-import java.util.List;
-
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
 
-        //Test test = new Test();
 
         //create some cars
         DieselCar mercedes = new DieselCar("Benz", "Mercedes", 2019, 40000.00);
+        ElectricCar elcar = new ElectricCar("Leaf", "Nissan", 2020, 300000.00);
+        LPGCar lpgcar = new LPGCar("Panda", "Fiat", 2000, 1000.00);
+        DieselCar seat = new DieselCar("Alhambra", "Seat", 2018, 60000.00);
 
 
-        //toString method
         Pet bob = new Pet("Dog", "Bob");
         Pet nia = new Pet("Cat", "Nia");
 
@@ -30,46 +27,41 @@ public class Main {
         Phone iphone = new Phone("Samsung", "Galaxy", 300.00);
         Human me = new Human("Wojo", "Graban", lg, bob);
         Human sister = new Human("Becia", "Budnik", iphone, nia);
-        me.setAuto(mercedes);
+        me.setAuto(elcar, 0);
+        me.setAuto(mercedes, 1);
+
+        //uncoment code below to throw freee place exception
+        //sister.setSalary(90000.00);
+        //sister.buyAutoFromSalon(lpgcar, 1);
+        sister.setAuto(lpgcar, 0);
+        me.sortMyCars();
+        sister.sortMyCars();
+        System.out.println("\n Sum value of my cars in garage " + me.valueCarsInGarage() + "\n My sister Sum value cars in  garage " + sister.valueCarsInGarage());
+
+//test selling car
+        elcar.sellCar(sister, me, 1, 10.00); // succesfully sell
+        // elcar.sellCar(sister, me, 1, 8000000.00); //exception with price
+        // elcar.sellCar(sister, me, 1, 10.00); // exception with ownership
+
+        me.sortMyCars();
+        sister.sortMyCars();
 
 
-//        bob.Feed();
-//        nia.Feed(25.00);
-//        FarmAnimal sheep = new FarmAnimal("Sheep");
-//        System.out.println(sheep.toString());
+        System.out.println(sister);
 
 
-        //list of app
-        List<String> appNames = new ArrayList<>();
-        appNames.add("BTD6");
-        appNames.add("Guns&Glory");
-        appNames.add("D&D");
-        appNames.add("facebook");
+//test
+        //Car[] offer = {mercedes, elcar, lpgcar,null, seat,null};
 
-        //array of app
-        String[] appToInstall = {"calculator", "calendar", "notebook"};
+        //System.out.println("Cars in offer before sort: " + Arrays.toString(offer));
+//sort with null
+        //Arrays.sort(offer,Comparator.nullsLast(Comparator.comparingInt(Car::getYear)));
 
-
-        try {
-            iphone.installAnnApp(appNames);
-            iphone.installAnnApp("Git");
-            iphone.installAnnApp("WPS ofiice", "5.2.4");
-            iphone.installAnnApp(appToInstall);
-
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        }
-
-        ElectricCar elcar = new ElectricCar("Leaf", "Nissan", 2020, 300000.00);
-        LPGCar lpgcar = new LPGCar("Panda", "Fiat", 2000, 1000.00);
-        DieselCar seat = new DieselCar("Alhambra", "Seat", 2020, 60000.00);
-        elcar.refuel();
-        lpgcar.refuel();
-        seat.refuel();
+        //System.out.println("Cars in offer after sort: " + Arrays.toString(offer));
 
 
-//        System.out.println("Animal Object: " + bob + "\n" + "Phone Object: " + lg + "\n" + "Car Object: " + theLittleOne + "\n" +
-//                "Human Object: " + me);
+        //System.out.println(me.getAuto(0) + "\n" + me.getAuto(1));
+        System.out.println("\n Sum value of my cars in garage " + me.valueCarsInGarage() + "\n My sister Sum value cars in  garage " + sister.valueCarsInGarage());
 
 
     }
