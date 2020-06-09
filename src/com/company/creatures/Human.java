@@ -85,6 +85,7 @@ public class Human extends Animal {
     }
 
     public void setAuto(Car auto, int placeInGarage) {
+        if (auto != null) auto.owners.add(this);
         this.garage[placeInGarage] = auto;
     }
 

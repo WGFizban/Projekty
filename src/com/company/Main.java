@@ -36,32 +36,18 @@ public class Main {
         sister.setAuto(lpgcar, 0);
         me.sortMyCars();
         sister.sortMyCars();
-        System.out.println("\n Sum value of my cars in garage " + me.valueCarsInGarage() + "\n My sister Sum value cars in  garage " + sister.valueCarsInGarage());
 
 //test selling car
+        System.out.println(elcar.showLastOwner());
         elcar.sellMe(sister, me, 10.00); // succesfully sell
         //elcar.sellMe(sister, me,8000000.00); //exception with price
         //lpgcar.sellMe(sister, me,10.00); // exception with ownership
+        System.out.println(elcar.showLastOwner());
 
-        me.sortMyCars();
-        sister.sortMyCars();
-
-        System.out.println(me.whatPlaceCarInGarage(mercedes));
-
-
-//test
-        //Car[] offer = {mercedes, elcar, lpgcar,null, seat,null};
-
-
-        //System.out.println("Cars in offer before sort: " + Arrays.toString(offer));
-//sort with null
-        //Arrays.sort(offer,Comparator.nullsLast(Comparator.comparingInt(Car::getYear)));
-
-        //System.out.println("Cars in offer after sort: " + Arrays.toString(offer));
-
-
-        //System.out.println(me.getAuto(0) + "\n" + me.getAuto(1));
-        System.out.println("\n Sum value of my cars in garage " + me.valueCarsInGarage() + "\n My sister Sum value cars in  garage " + sister.valueCarsInGarage());
+        System.out.println("Has seat owners: " + seat.showLastOwner() + " number of transaction " + seat.numberOfCarTransaction());
+        System.out.println("Has nissan owners: " + elcar.hasAnOwner() + " number of transaction " + elcar.numberOfCarTransaction());
+        System.out.println("Has mercedes owners: " + mercedes.hasAnOwner() + " number of transaction " + mercedes.numberOfCarTransaction());
+        elcar.wasTransactioBetwenAB(me, sister);
 
 
     }
