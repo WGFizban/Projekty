@@ -2,8 +2,9 @@ package com.company.devices;
 
 import com.company.creatures.Human;
 
-import java.net.MalformedURLException;
-import java.net.URL;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class Phone extends Device {
@@ -13,6 +14,12 @@ public class Phone extends Device {
     static final int DEFAULT_PORT = 140;
     static final String DEFAULT_APP_VERSION = "Latest";
     Double screenSize;
+    public List<Application> appList = new ArrayList<>();
+    private Human owner;
+
+    public void setOwner(Human owner) {
+        this.owner = owner;
+    }
 
     public Phone(String producer, String model, Double screenSize) {
         this.producer = producer;
@@ -45,31 +52,47 @@ public class Phone extends Device {
         }
     }
 
-    //installing an App
-    public void installAnnApp(String[] appNames) throws MalformedURLException {
-        for (String appName : appNames) {
-            installAnnApp(appName);
+    public boolean isAplicationInsatlled(Application apk) {
+        return appList.contains(apk);
+    }
+
+    public boolean isAplicationInsatlled(String name) {
+        return appList.toString().contains(name);
+    }
+
+    public void showFreeApp() {
+        for (Application app : appList) {
+            if (app.price == 0.0) System.out.println(app.toString());
         }
     }
 
-    public void installAnnApp(List<String> appNames) throws MalformedURLException {
-        for (String appName : appNames) {
-            installAnnApp(appName);
+    public Double priceAppOnPhone() {
+        Double sumAppValue = 0.0;
+        for (Application app : appList) {
+            if (app != null) sumAppValue += app.price;
+        }
+        return sumAppValue;
+    }
+
+    public void sortMyAplicationByPrice() {
+        Collections.sort(appList, Comparator.nullsLast(Comparator.comparingDouble(Application::getPrice)));
+        System.out.println(appList);
+    }
+
+    public void sortMyAplicationByName() {
+        Collections.sort(appList);
+        System.out.println(appList);
+    }
+
+
+    //new installing app method
+    public void installAnApp(Application apk) throws Exception {
+        if (owner.cash < apk.price) {
+            throw new Exception("Not enough money, sorry");
+        } else {
+            owner.cash -= apk.price;
+            appList.add(apk);
+            System.out.println("You sucesfully instal an App" + apk.toString());
         }
     }
-
-    public void installAnnApp(String appName) throws MalformedURLException {
-        installAnnApp(appName, DEFAULT_APP_VERSION);
-    }
-
-    public void installAnnApp(String appName, String appVersion) throws MalformedURLException {
-        URL url = new URL(DEFAULT_PROTOCOL, DEFAULT_HOST, DEFAULT_PORT, appName + " version: " + appVersion);
-        installAnnApp(url);
-    }
-
-    public void installAnnApp(URL appUrl) {
-        System.out.println("On your Phone will be installed: " + appUrl.getFile());
-    }
-
-
 }

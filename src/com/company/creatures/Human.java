@@ -12,6 +12,12 @@ import java.util.Comparator;
 public class Human extends Animal {
     public String firstName;
     String lastName;
+
+    public void setPhone(Phone phone) {
+        phone.setOwner(this);
+        this.phone = phone;
+    }
+
     public Phone phone;
     public Animal pet;
 

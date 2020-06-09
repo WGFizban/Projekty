@@ -3,10 +3,7 @@ package com.company;
 
 import com.company.creatures.Human;
 import com.company.creatures.Pet;
-import com.company.devices.DieselCar;
-import com.company.devices.ElectricCar;
-import com.company.devices.LPGCar;
-import com.company.devices.Phone;
+import com.company.devices.*;
 
 public class Main {
 
@@ -29,25 +26,18 @@ public class Main {
         Human sister = new Human("Becia", "Budnik", iphone, nia);
         me.setAuto(elcar, 0);
         me.setAuto(mercedes, 1);
+        me.setPhone(iphone);
 
-        //uncoment code below to throw freee place exception
-        //sister.setSalary(90000.00);
-        //sister.buyAutoFromSalon(lpgcar, 1);
-        sister.setAuto(lpgcar, 0);
-        me.sortMyCars();
-        sister.sortMyCars();
+        //test
+        Application test1 = new Application("calculator", "v1", 20.00);
+        Application test2 = new Application("mess", "v1", 0.0);
+        Application test3 = new Application("facebook", "v1", 0.0);
+        Application test4 = new Application("spotify", "v1", 20.00);
+        Application test5 = new Application("email", "v1", 20.00);
 
-//test selling car
-        System.out.println(elcar.showLastOwner());
-        elcar.sellMe(sister, me, 10.00); // succesfully sell
-        //elcar.sellMe(sister, me,8000000.00); //exception with price
-        //lpgcar.sellMe(sister, me,10.00); // exception with ownership
-        System.out.println(elcar.showLastOwner());
-
-        System.out.println("Has seat owners: " + seat.showLastOwner() + " number of transaction " + seat.numberOfCarTransaction());
-        System.out.println("Has nissan owners: " + elcar.hasAnOwner() + " number of transaction " + elcar.numberOfCarTransaction());
-        System.out.println("Has mercedes owners: " + mercedes.hasAnOwner() + " number of transaction " + mercedes.numberOfCarTransaction());
-        elcar.wasTransactioBetwenAB(me, sister);
+        me.phone.installAnApp(test1);
+        me.phone.installAnApp(test2);
+        me.phone.installAnApp(test3);
 
 
     }
